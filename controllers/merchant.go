@@ -29,7 +29,7 @@ func (r MerchantController) FindAll(c *gin.Context) {
 		Limit: query.PerPage,
 	}
 
-	tx := models.DB.Debug().Model(&models.Merchant{})
+	tx := models.DB.Debug().Model(&models.Merchant{}).Order("name")
 
 	if query.ResidenceUUID != "" {
 		tx.Where("residence_uuid = ?", query.ResidenceUUID)
@@ -42,13 +42,6 @@ func (r MerchantController) FindAll(c *gin.Context) {
 		Find(&merchants)
 
 	meta.Count = len(merchants)
-
-	merchants = append(merchants, merchants[0])
-	merchants = append(merchants, merchants[0])
-	merchants = append(merchants, merchants[0])
-	merchants = append(merchants, merchants[0])
-	merchants = append(merchants, merchants[0])
-	merchants = append(merchants, merchants[0])
 
 	time.Sleep(3 * time.Second)
 

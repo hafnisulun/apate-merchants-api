@@ -9,10 +9,11 @@ import (
 
 type Merchant struct {
 	Base
-	Name          string    `json:"name" gorm:"unique;not null;"`
+	Name          string    `json:"name" gorm:"index;not null;"`
 	Lat           float64   `json:"lat" gorm:"not null;"`
 	Lon           float64   `json:"lon" gorm:"not null;"`
-	Image         string    `json:"image" gorm:"not null;"`
+	Phone         string    `json:"phone"`
+	Image         string    `json:"image"`
 	ResidenceUUID uuid.UUID `json:"residence_uuid" gorm:"index;not null"`
 	ClusterUUID   uuid.UUID `json:"cluster_uuid" gorm:"index;not null"`
 }
@@ -21,6 +22,7 @@ type CreateMerchantInput struct {
 	Name          string    `json:"name" binding:"required"`
 	Lat           float64   `json:"lat" binding:"required"`
 	Lon           float64   `json:"lon" binding:"required"`
+	Phone         string    `json:"phone"`
 	ResidenceUUID uuid.UUID `json:"residence_uuid" binding:"required"`
 	ClusterUUID   uuid.UUID `json:"cluster_uuid" binding:"required"`
 }
