@@ -3,7 +3,6 @@ package controllers
 import (
 	"log"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/hafnisulun/apate-merchants-api/models"
@@ -42,8 +41,6 @@ func (r MerchantController) FindAll(c *gin.Context) {
 		Find(&merchants)
 
 	meta.Count = len(merchants)
-
-	time.Sleep(3 * time.Second)
 
 	// Send response
 	c.JSON(http.StatusOK, gin.H{
