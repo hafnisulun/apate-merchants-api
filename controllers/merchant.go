@@ -82,6 +82,8 @@ func (r MerchantController) Create(c *gin.Context) {
 		Name:          input.Name,
 		Lat:           input.Lat,
 		Lon:           input.Lon,
+		Phone:         input.Phone,
+		Address:       input.Address,
 		ResidenceUUID: input.ResidenceUUID,
 		ClusterUUID:   input.ClusterUUID,
 	}

@@ -14,6 +14,7 @@ type Merchant struct {
 	Lon           float64   `json:"lon" gorm:"not null;"`
 	Phone         string    `json:"phone"`
 	Image         string    `json:"image"`
+	Address       string    `json:"address"`
 	ResidenceUUID uuid.UUID `json:"residence_uuid" gorm:"index;not null"`
 	ClusterUUID   uuid.UUID `json:"cluster_uuid" gorm:"index;not null"`
 }
@@ -23,6 +24,7 @@ type CreateMerchantInput struct {
 	Lat           float64   `json:"lat" binding:"required"`
 	Lon           float64   `json:"lon" binding:"required"`
 	Phone         string    `json:"phone"`
+	Address       string    `json:"address"`
 	ResidenceUUID uuid.UUID `json:"residence_uuid" binding:"required"`
 	ClusterUUID   uuid.UUID `json:"cluster_uuid" binding:"required"`
 }
